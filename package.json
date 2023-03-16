@@ -1,0 +1,69 @@
+{
+	"name": "regexp-syntax-highlighter",
+	"displayName": "Injected Regex Syntax Highlighting",
+	"description": "Syntax Highlighting for regex's in other languages",
+	"publisher": "RedCMD",
+	"version": "1.0.0",
+	"engines": {
+		"vscode": "^1.47.0"
+	},
+	"icon": "",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/RedCMD/regex-syntax-highlighter-vscode.git"
+	},
+	"keywords": [
+		"regex",
+		"regexp"
+	],
+	"categories": [
+		"Programming Languages"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "regexp",
+				"aliases": [
+					"regexp"
+				],
+				"extensions": [
+					".regexp"
+				],
+				"icon": {
+					"dark": "./images/icon-dark.svg",
+					"light": "./images/icon-light.svg"
+				},
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "regexp",
+				"scopeName": "source.syntax.regexp",
+				"path": "./syntaxes/regexp.tmLanguage.json",
+				"embeddedLanguages": {
+					"meta.embedded.regexp": "regexp",
+					"meta.bracket.regexp": "regexp"
+				},
+				"injectTo": [
+					"source.js"
+				],
+				"unbalancedBracketScopes": [
+					"test"
+				],
+				"balancedBracketScopes": [
+					"string.regexp.js",
+					"punctuation.definition.character-class.regexp",
+					"comment"
+				],
+				"tokenTypes": {
+					"punctuation.definition.character-class.regexp": "other",
+					"string.regexp.js": "other",
+					"string": "other",
+					"comment": "other",
+					"inject.regexp": "other"
+				}
+			}
+		]
+	}
+}
