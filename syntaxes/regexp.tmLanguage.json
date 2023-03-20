@@ -1,175 +1,127 @@
 {
-	"version": "https://github.com/RedCMD/TmLanguage-Syntax-Highlighter",
+	"version": "https://github.com/RedCMD/regex-syntax-highlighter-vscode",
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"scopeName": "source.syntax.regexp",
 	"name": "Regexp",
-	"injectionSelector": "string.regexp.js -punctuation.definition.character-class.regexp -meta.embedded.regexp -meta.bracket.regexp -inject.regexp -comment",
+	"injectionSelector": "L:string.regexp.js -meta.embedded.regexp",
 	"patterns": [
 		{
-			"begin": "(?<!\\+\\+)(?<=(?>[=(:,\\[?+!]|(?>^|[^._$[:alnum:]])(?>return|case)|=>|&&|\\|\\||\\*/)\\s*a\\/)(?![\\/*])",
-			"end": "(?=/)",
-			"name": "meta.embedded.regexp inject.regexp",
-			"patterns": [ { "include": "source.js#regexp" } ]
-		},
-		{
-			"match": "(?<=\\sa/)((?>[^\\\\/]++|\\\\.)++)(?=/[dgimsuy]*x)",
-			"captures": { "1": { "patterns": [ { "include": "#regexp-extended" } ] } },
-			"name": "meta.embedded.regexp"
-		},
-		{
-			"match": "(?<=\\ta/)((?>[^\\\\/]++|\\\\.)++)(?=/)",
-			"captures": { "1": { "patterns": [ { "include": "source.js#regexp" } ] } },
-			"name": "meta.embedded.regexp"
-		},
-		{
-			"match": "(?<=\\sa/)((?>[^\\\\/]++|\\\\.)++)(?=/)",
-			"captures": { "1": { "patterns": [ { "include": "#regexp" } ] } },
-			"name": "meta.embedded.regexp"
-		},
-		{
-			"match": "(?<=([]\\[()]))",
-			"captures": { "1": { "name": "comment" } }
+			"begin": "(?<!\\+\\+)(?<=(?>[=(:,\\[?+!]|(?>^|[^._$[:alnum:]])(?>return|case)|=>|&&|\\|\\||\\*/)\\s*\\/)(?![\\/*])",
+			"end": "(?=/|$)",
+			"name": "meta.embedded.regexp",
+			"patterns": [ { "include": "#regexp" } ]
 		}
 	],
 	"repository": {
 		"regexp": {
-			"comment": "today I found out that you cant use $self and $base as key names, even tho #$self and #$base are treated as normal include names",
-			"patterns": [
-				{ "include": "#capture-group" },
-				{ "include": "#character-class" },
-				{ "include": "#quantifier" },
-				{ "include": "#anchor" },
-				{ "include": "#backreference" },
-				{ "include": "#character-codes" },
-				{ "include": "#alternation" },
-				{ "include": "#escape-characters" },
-				{ "include": "#string" }
-			]
-		},
-		"regexp-extended": {
-			"comment": "extended option enabled via the flag `x`. enables comments via `#...\n` and ignores all whitespace",
-			"comment": "javascript doesn't support the extended flag option `x`??",
-			"patterns": [
-				{ "include": "#capture-group" },
-				{ "include": "#escape-characters" },
-				{ "include": "#string" }
-			]
-		},
-		"capture-group": {
-			"comment": "( ... )",
-			"begin": "\\((?>\\?:|\\?<(\\w+)>)?",
-			"end": "\\)",
-			"beginCaptures": {
-				"0": { "name": "punctuation.definition.group.regexp" },
-				"1": { "name": "variable.other.regexp" }
-			},
-			"endCaptures": { "0": { "name": "punctuation.definition.group.regexp" } },
-			"contentName": "meta.group.regexp",
-			"patterns": [ { "include": "#regexp" } ]
-		},
-		"capture-group-no-capture": {
-			"comment": "( ... )",
-			"begin": "\\((\\?<?[=!])",
-			"end": "\\)",
-			"beginCaptures": { "0": { "name": "punctuation.definition.group.assertion.regexp" } },
-			"endCaptures": { "0": { "name": "punctuation.definition.group.assertion.regexp" } },
-			"contentName": "meta.group.assertion.regexp",
-			"patterns": [ { "include": "#regexp" } ]
-		},
-		"character-class": {
-			"comment": "[ ... ]",
-			"begin": "(\\[)(\\^)?",
-			"end": "(?!\\G)]",
-			"beginCaptures": {
-				"1": { "name": "punctuation.character.set.begin.regexp" },
-				"2": { "name": "keyword.operator.negation.regexp" }
-			},
-			"endCaptures": { "0": { "name": "punctuation.character.set.end.regexp" } },
-			"contentName": "constant.character.set.regexp",
-			"patterns": [
-				{ "include": "#character-codes" },
-				{
-					"name": "constant.other.character-class.regexp",
-					"match": "-"
-				},
-				{
-					"name": "constant.other.character-class.regexp",
-					"match": "\\\\[dDwWsStrnvf]"
-				},
-				{
-					"name": "constant.character.escape.regexp",
-					"match": "\\\\."
-				}
-			]
-		},
-		"quantifier": {
-			"comment": "+ * ? {1,9}",
 			"patterns": [
 				{
-					"comment": "quantifiers are invalid at the start of a group",
-					"match": "\\G(?>[+*?]|{(?>\\d+,?\\d*|,\\d+)})",
-					"name": "keyword.operator.quantifier.regexp invalid.illegal.regexp"
+					"name": "keyword.control.anchor.regexp",
+					"match": "\\\\[bB]|\\^|\\$"
 				},
 				{
-					"comment": "+ * ? ++ +? *+ *? ?+ ?? \n  ? creates a lazy quantifier and + a possessive quantifier",
-					"match": "[+*?]([+?])?",
-					"captures": {
-						"0": { "name": "keyword.operator.quantifier.regexp" },
-						"1": { "name": "strong" }
-					}
-				},
-				{
-					"match": "{(?>(\\d+),(\\d*)|,?(\\d+))}",
-					"captures": {
-						"0": { "name": "keyword.operator.quantifier.regexp" },
-						"1": { "name": "constant.numeric.regexp" },
-						"2": { "name": "constant.numeric.regexp" },
-						"3": { "name": "constant.numeric.regexp" }
-					}
-				}
-			]
-		},
-		"backreference": {
-			"patterns": [
-				{
-					"comment": "backreferences cannot have leading 0's??",
-					"match": "\\\\[1-9]\\d*",
-					"name": "keyword.other.back-reference.regexp"
-				},
-				{
-					"comment": "there some funky stuff going on with limits on allowed chars??",
-					"match": "\\\\k<([_a-zA-Z$][\\w$]*)>",
+					"match": "\\\\[1-9]\\d*|\\\\k<([a-zA-Z_$][\\w$]*)>",
 					"captures": {
 						"0": { "name": "keyword.other.back-reference.regexp" },
 						"1": { "name": "variable.other.regexp" }
 					}
+				},
+				{
+					"name": "keyword.operator.quantifier.regexp",
+					"match": "[?+*]|\\{(\\d+,\\d+|\\d+,|,\\d+|\\d+)\\}\\??"
+				},
+				{
+					"name": "keyword.operator.or.regexp",
+					"match": "\\|"
+				},
+				{
+					"name": "meta.group.assertion.regexp",
+					"begin": "(\\()((\\?=)|(\\?!)|(\\?<=)|(\\?<!))",
+					"beginCaptures": {
+						"1": { "name": "punctuation.definition.group.regexp" },
+						"2": { "name": "punctuation.definition.group.assertion.regexp" },
+						"3": { "name": "meta.assertion.look-ahead.regexp" },
+						"4": { "name": "meta.assertion.negative-look-ahead.regexp" },
+						"5": { "name": "meta.assertion.look-behind.regexp" },
+						"6": { "name": "meta.assertion.negative-look-behind.regexp" }
+					},
+					"end": "(\\))|(?=/)",
+					"endCaptures": { "1": { "name": "punctuation.definition.group.regexp" } },
+					"patterns": [ { "include": "#regexp" } ]
+				},
+				{
+					"name": "meta.group.regexp",
+					"begin": "\\((?:(\\?:)|(?:\\?<([a-zA-Z_$][\\w$]*)>))?",
+					"beginCaptures": {
+						"0": { "name": "punctuation.definition.group.regexp" },
+						"1": { "name": "punctuation.definition.group.no-capture.regexp" },
+						"2": { "name": "variable.other.regexp" }
+					},
+					"end": "\\)|(?=/)",
+					"endCaptures": { "0": { "name": "punctuation.definition.group.regexp" } },
+					"patterns": [ { "include": "#regexp" } ]
+				},
+				{
+					"name": "constant.other.character-class.set.regexp",
+					"begin": "(\\[)(\\^)?",
+					"beginCaptures": {
+						"1": { "name": "punctuation.definition.character-class.regexp" },
+						"2": { "name": "keyword.operator.negation.regexp" }
+					},
+					"end": "(\\])",
+					"endCaptures": { "1": { "name": "punctuation.definition.character-class.regexp" } },
+					"comment": "as a temporary measure; because balancedBracketScopes, unbalancedBracketScopes and tokenTypes don't seem to work with injected grammars",
+					"contentName": "regex",
+					"patterns": [
+						{
+							"name": "constant.other.character-class.range.regexp",
+							"match": "(?>(\\\\(?>[0-7]{3}|x\\h{2}|u\\h{4}))|(\\\\c[A-Z])|(\\\\.)|.)-(?>(\\\\(?>[0-7]{3}|x\\h{2}|u\\h{4}))|(\\\\c[A-Z])|(\\\\.)|[^\\]\\\\])",
+							"captures": {
+								"1": { "name": "constant.character.numeric.regexp" },
+								"2": { "name": "constant.character.control.regexp" },
+								"3": { "name": "constant.character.escape.backslash.regexp" },
+								"4": { "name": "constant.character.numeric.regexp" },
+								"5": { "name": "constant.character.control.regexp" },
+								"6": { "name": "constant.character.escape.backslash.regexp" }
+							}
+						},
+						{ "include": "#regex-character-class" }
+					]
+				},
+				{ "include": "#regex-character-class" },
+				{
+					"match": "\\)",
+					"name": "punctuation.definition.group.regexp"
+				},
+				{
+					"match": "[^$^.+*?|\\[{()\\\\/]+",
+					"name": "string.regexp.js"
+				},
+				{
+					"match": ".+",
+					"name": "invalid report.to.RedCMD"
 				}
 			]
 		},
-		"character-codes": {
-			"comment": "octal: \\000. hex: \\x00. Unicode: \\u0000",
-			"match": "\\\\([0-7]{3}|x\\h{2}|u\\h{4})",
-			"name": "constant.character.numeric.hex.regexp"
-		},
-		"anchor": {
-			"comment": "basic anchor",
-			"match": "[$^]|\\\\[bB]",
-			"name": "keyword.control.anchor.regexp"
-		},
-		"alternation": {
-			"comment": "or operator |",
-			"match": "\\|",
-			"name": "keyword.operator.or.regexp"
-		},
-		"escape-characters": {
-			"comment": "single backslashed chars \\.",
-			"match": "\\\\.",
-			"name": "constant.character.escape.regexp"
-		},
-		"string": {
-			"comment": "Capture all non-meta-characters and all left over meta-characters",
-			"match": ".[^\\\\$^.\\[{()+*?]*",
-			"name": "string.regexp"
+		"regex-character-class": {
+			"patterns": [
+				{
+					"name": "constant.other.character-class.regexp",
+					"match": "\\\\[wWsSdDtrnvf]|\\."
+				},
+				{
+					"name": "constant.character.numeric.regexp",
+					"match": "\\\\([0-7]{3}|x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4})"
+				},
+				{
+					"name": "constant.character.control.regexp",
+					"match": "\\\\c[A-Z]"
+				},
+				{
+					"name": "constant.character.escape.backslash.regexp",
+					"match": "\\\\."
+				}
+			]
 		}
 	}
 }

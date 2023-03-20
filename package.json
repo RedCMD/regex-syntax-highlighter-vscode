@@ -3,7 +3,7 @@
 	"displayName": "Injected Regex Syntax Highlighting",
 	"description": "Syntax Highlighting for regex's in other languages",
 	"publisher": "RedCMD",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.47.0"
 	},
@@ -42,27 +42,11 @@
 				"scopeName": "source.syntax.regexp",
 				"path": "./syntaxes/regexp.tmLanguage.json",
 				"embeddedLanguages": {
-					"meta.embedded.regexp": "regexp",
-					"meta.bracket.regexp": "regexp"
+					"meta.embedded.regexp": "regexp"
 				},
 				"injectTo": [
 					"source.js"
-				],
-				"unbalancedBracketScopes": [
-					"test"
-				],
-				"balancedBracketScopes": [
-					"string.regexp.js",
-					"punctuation.definition.character-class.regexp",
-					"comment"
-				],
-				"tokenTypes": {
-					"punctuation.definition.character-class.regexp": "other",
-					"string.regexp.js": "other",
-					"string": "other",
-					"comment": "other",
-					"inject.regexp": "other"
-				}
+				]
 			}
 		]
 	}

@@ -3,12 +3,11 @@
 		// symbol used for single line comment. Remove this entry if your language does not support line comments
 		// "lineComment": "//",
 		// symbols used for start and end a block comment. Remove this entry if your language does not support block comments
-		"blockComment": [ "(?#", ")" ]
+		// "blockComment": [ "(?#", ")" ]
 	},
 	// symbols used as brackets
 	"brackets": [
 		["(", ")"],
-		["[:", ":]"],
 		["[", "]"],
 		["{", "}"],
 		["<", ">"]
@@ -20,17 +19,14 @@
 		["{", "}"],
 		["<", ">"]
 	],
-	"autoCloseBefore": "()[{< |$",
+	"autoCloseBefore": "()[{< |$+*?",
 	// symbols that can be used to surround a selection
 	"surroundingPairs": [
 		["(", ")"],
-		["[", "]"],
-		["{", "}"]
+		["[", "]"]
 	],
 	// symbols that can be coloured
 	"colorizedBracketPairs": [
-		["(", ")"],
-		["[", "]"]
-	],
-	"wordPattern": "(?<=(?<!\\\\)(\\\\{2})*)(\\\\{2}|\\\\.)|<\\w*[+-]?\\w*>|'\\w*[+-]?\\w*'|{\\d+,\\d*}|{\\d*,\\d+}|{\\^?\\w+}|\\[:\\^?\\w+:\\]|\\w+"
+		["(", ")"]
+	]
 }

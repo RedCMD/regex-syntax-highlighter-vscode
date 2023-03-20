@@ -1,7 +1,7 @@
 
 
-new regex(	/regex/ )
-new regex(	/re[g[G]]e((x)/ + /rege2 )/ )
+new regex(	/[]/ )
+new regex(	/re[g[G]][e\\]((x)/ + /rege2 )/ )
 new regex(	/r\e[g[G]]e(x)/ )
 new regex(	/re[g-[G]]e(x)/ )
 new regex(	/^refs\/tags\/([^ ]+) ([0-9a-f]{40}) ([0-9a-f]{40})?$/ )
