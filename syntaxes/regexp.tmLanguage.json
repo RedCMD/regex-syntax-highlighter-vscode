@@ -6,7 +6,7 @@
 	"injectionSelector": "L:string.regexp.js -meta.embedded.regexp",
 	"patterns": [
 		{
-			"begin": "(?<!\\+\\+)(?<=(?>[=(:,\\[?+!]|(?>^|[^._$[:alnum:]])(?>return|case)|=>|&&|\\|\\||\\*/)\\s*\\/)(?![\\/*])",
+			"begin": "(?<!\\+\\+)(?<=(?>(?>^|[^._$[:alnum:]])(?>return|case)|=>|&&|\\|\\||\\*/|[=(:,\\[?+!])\\s*/)(?![/*])",
 			"end": "(?=/|$)",
 			"name": "meta.embedded.regexp",
 			"patterns": [ { "include": "#regexp" } ]
@@ -125,5 +125,3 @@
 		}
 	}
 }
-
-
