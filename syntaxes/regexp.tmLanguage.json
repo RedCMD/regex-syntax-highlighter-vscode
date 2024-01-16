@@ -118,7 +118,7 @@
 					"match": "\\\\c[A-Z]"
 				},
 				{
-					"name": "constant.character.escape.backslash.regexp",
+					"name": "constant.character.escape.backslash.regex",
 					"match": "\\\\."
 				}
 			]
