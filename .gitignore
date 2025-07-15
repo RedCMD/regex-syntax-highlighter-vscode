@@ -1,2 +1,9 @@
 node_modules
 *.vsix
+.git
+.old
+_old
+*.zip
+*.vsix
+*.vsixmanifest
+_test

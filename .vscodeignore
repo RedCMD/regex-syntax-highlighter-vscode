@@ -6,3 +6,5 @@
 .gitattributes
 .vscodeignore
 vsc-extension-quickstart.md
+_test/**
+Example-*
