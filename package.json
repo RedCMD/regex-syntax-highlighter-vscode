@@ -14,7 +14,8 @@
 	},
 	"keywords": [
 		"regex",
-		"regexp"
+		"typescript",
+		"javascript"
 	],
 	"categories": [
 		"Programming Languages"
@@ -27,7 +28,8 @@
 					"regexp"
 				],
 				"extensions": [
-					".regexp"
+					".js.regexp",
+					".ts.regexp"
 				],
 				"icon": {
 					"dark": "./images/icon-dark.svg",
@@ -45,7 +47,10 @@
 					"meta.embedded.js.regexp": "regexp"
 				},
 				"injectTo": [
-					"source.js"
+					"source.js",
+					"source.js.jsx",
+					"source.ts",
+					"source.tsx"
 				]
 			}
 		]

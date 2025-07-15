@@ -3,7 +3,7 @@
 	"$schema": "https://raw.githubusercontent.com/RedCMD/TmLanguage-Syntax-Highlighter/main/vscode.tmLanguage.schema.json",
 	"name": "JavaScript Regular Expressions",
 	"scopeName": "source.js.regexp",
-	"injectionSelector": "L:string.regexp.js -meta.embedded.js.regexp",
+	"injectionSelector": "L:string.regexp.js -meta.embedded.js.regexp, L:string.regexp.ts -meta.embedded.js.regexp, L:string.regexp.tsx -meta.embedded.js.regexp",
 	"patterns": [
 		{
 			"begin": "(?<!\\+\\+)(?<=(?>(?>^|[^._$[:alnum:]])(?>return|case)|=>|&&|\\|\\||\\*/|[=(:,\\[?+!])\\s*/)(?![/*])",
