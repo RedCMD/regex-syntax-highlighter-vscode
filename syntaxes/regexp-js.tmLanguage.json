@@ -1,5 +1,5 @@
 {
-	"version": "https://github.com/RedCMD/regex-syntax-highlighter-vscode",
+	"version": "https://github.com/RedCMD/regex-syntax-highlighter-vscode/syntaxes/regexp-js.tmLanguage.json",
 	"$schema": "https://raw.githubusercontent.com/RedCMD/TmLanguage-Syntax-Highlighter/main/vscode.tmLanguage.schema.json",
 	"name": "JavaScript Regular Expressions",
 	"scopeName": "source.js.regexp",
@@ -171,6 +171,7 @@
 					}
 				},
 				{
+					"comment": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Unicode_character_class_escape#syntax",
 					"begin": "\\\\[Pp]{",
 					"end": "}|(?=/)|$",
 					"captures": { "0": { "name": "constant.character.class.property.regexp.js" } },

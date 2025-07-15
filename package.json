@@ -12,6 +12,9 @@
 		"type": "git",
 		"url": "git+https://github.com/RedCMD/regex-syntax-highlighter-vscode.git"
 	},
+	"bugs": {
+		"url": "https://github.com/RedCMD/JSON-Embedded-Languages/issues"
+	},
 	"keywords": [
 		"regex",
 		"typescript",
