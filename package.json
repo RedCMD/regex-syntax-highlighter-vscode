@@ -39,10 +39,10 @@
 		"grammars": [
 			{
 				"language": "regexp",
-				"scopeName": "source.syntax.regexp",
-				"path": "./syntaxes/regexp.tmLanguage.json",
+				"scopeName": "source.js.regexp",
+				"path": "./syntaxes/regexp-js.tmLanguage.json",
 				"embeddedLanguages": {
-					"meta.embedded.regexp": "regexp"
+					"meta.embedded.js.regexp": "regexp"
 				},
 				"injectTo": [
 					"source.js"

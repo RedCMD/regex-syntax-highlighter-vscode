@@ -1,14 +1,14 @@
 {
 	"version": "https://github.com/RedCMD/regex-syntax-highlighter-vscode",
 	"$schema": "https://raw.githubusercontent.com/RedCMD/TmLanguage-Syntax-Highlighter/main/vscode.tmLanguage.schema.json",
-	"scopeName": "source.syntax.regexp",
-	"name": "Regexp",
-	"injectionSelector": "L:string.regexp.js -meta.embedded.regexp",
+	"name": "JavaScript Regular Expressions",
+	"scopeName": "source.js.regexp",
+	"injectionSelector": "L:string.regexp.js -meta.embedded.js.regexp",
 	"patterns": [
 		{
 			"begin": "(?<!\\+\\+)(?<=(?>(?>^|[^._$[:alnum:]])(?>return|case)|=>|&&|\\|\\||\\*/|[=(:,\\[?+!])\\s*/)(?![/*])",
 			"end": "(?=/|$)",
-			"name": "meta.embedded.regexp",
+			"name": "meta.embedded.js.regexp",
 			"patterns": [ { "include": "#regexp" } ]
 		}
 	],
