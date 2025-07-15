@@ -19,7 +19,7 @@
 		["{", "}"],
 		["<", ">"]
 	],
-	"autoCloseBefore": "()[{< |$+*?",
+	"autoCloseBefore": "()[{< /|$+*?",
 	// symbols that can be used to surround a selection
 	"surroundingPairs": [
 		["(", ")"],
