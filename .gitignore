@@ -1,9 +1,12 @@
 node_modules
-*.vsix
 .git
 .old
 _old
+_test/*
+
+!test.js
+
 *.zip
 *.vsix
+*.vsix
 *.vsixmanifest
-_test

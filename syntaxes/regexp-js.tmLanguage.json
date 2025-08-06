@@ -6,7 +6,7 @@
 	"injectionSelector": "L:string.regexp.js -meta.embedded.js.regexp, L:string.regexp.ts -meta.embedded.js.regexp, L:string.regexp.tsx -meta.embedded.js.regexp",
 	"patterns": [
 		{
-			"begin": "(?<=/)",
+			"begin": "(?<=/)(?!/|$)",
 			"end": "(?=/|$)",
 			"name": "meta.embedded.js.regexp",
 			"contentName": "string.regexp.js",
