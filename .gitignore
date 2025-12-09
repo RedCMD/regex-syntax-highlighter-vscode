@@ -4,8 +4,6 @@ node_modules
 _old
 _test/*
 
-!test.js
-
 *.zip
 *.vsix
 *.vsixmanifest

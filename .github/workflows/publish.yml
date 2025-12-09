@@ -29,6 +29,10 @@ jobs:
           git add .
           git diff-index --quiet HEAD || git commit -m "Sync Github Actions"
 
+      - name: Test # check grammars are working
+        run: | # shell
+          npm run test
+
       - name: Publish # upload to Extension Marketplace
         run: | # shell
           npm run publish --- ${{ github.event.inputs.version }} -p ${{ secrets.VSCE_PAT }}

@@ -25,7 +25,9 @@
 	],
 	"scripts": {
 		"package": "vsce package",
-		"publish": "vsce publish"
+		"publish": "vsce publish",
+		"test": "vscode-tmgrammar-snap ./syntaxes/tests/*.js --scope source.js --grammar ./syntaxes/tests/JavaScript.tmLanguage.json",
+		"test:update": "npm run test -- --updateSnapshot"
 	},
 	"contributes": {
 		"languages": [
@@ -63,6 +65,7 @@
 		]
 	},
 	"devDependencies": {
-		"vsce": "^2.15.0"
+		"vsce": "^2.15.0",
+		"vscode-tmgrammar-test": "^0.1.3"
 	}
 }
