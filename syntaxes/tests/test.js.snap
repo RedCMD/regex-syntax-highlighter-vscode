@@ -2687,3 +2687,29 @@
 #^ source.js meta.var.expr.js meta.objectliteral.js punctuation.definition.block.js
 # ^ source.js punctuation.terminator.statement.js
 >
+>const controlCharacters = /\cA\ca\cM\cm\cJ\cj\cZ\cz  \c@\c*/;
+#^^^^^ source.js meta.var.expr.js storage.type.js
+#     ^ source.js meta.var.expr.js
+#      ^^^^^^^^^^^^^^^^^ source.js meta.var.expr.js meta.var-single-variable.expr.js meta.definition.variable.js variable.other.constant.js
+#                       ^ source.js meta.var.expr.js meta.var-single-variable.expr.js
+#                        ^ source.js meta.var.expr.js keyword.operator.assignment.js
+#                         ^ source.js meta.var.expr.js string.regexp.js
+#                          ^ source.js meta.var.expr.js string.regexp.js punctuation.definition.string.begin.js
+#                           ^^^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js constant.character.control.regexp.js
+#                              ^^^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js constant.character.control.regexp.js
+#                                 ^^^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js constant.character.control.regexp.js
+#                                    ^^^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js constant.character.control.regexp.js
+#                                       ^^^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js constant.character.control.regexp.js
+#                                          ^^^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js constant.character.control.regexp.js
+#                                             ^^^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js constant.character.control.regexp.js
+#                                                ^^^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js constant.character.control.regexp.js
+#                                                   ^^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js
+#                                                     ^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js constant.character.escape.backslash.regexp.js
+#                                                      ^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js
+#                                                       ^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js
+#                                                        ^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js constant.character.escape.backslash.regexp.js
+#                                                         ^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js
+#                                                          ^ source.js meta.var.expr.js string.regexp.js meta.embedded.js.regexp string.regexp.js keyword.operator.quantifier.regexp.js
+#                                                           ^ source.js meta.var.expr.js string.regexp.js punctuation.definition.string.end.js
+#                                                            ^ source.js punctuation.terminator.statement.js
+>

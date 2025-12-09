@@ -149,7 +149,7 @@
 					"name": "constant.character.escape.character.regexp.js"
 				},
 				{
-					"match": "\\\\c[A-Z]",
+					"match": "\\\\c[A-Za-z]",
 					"name": "constant.character.control.regexp.js"
 				},
 				{ "include": "#unicode" },
