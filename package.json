@@ -23,6 +23,10 @@
 	"categories": [
 		"Programming Languages"
 	],
+	"scripts": {
+		"package": "vsce package",
+		"publish": "vsce publish"
+	},
 	"contributes": {
 		"languages": [
 			{
@@ -57,5 +61,8 @@
 				]
 			}
 		]
+	},
+	"devDependencies": {
+		"vsce": "^2.15.0"
 	}
 }

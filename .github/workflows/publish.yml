@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version'
+        description: Version
         default: minor
         type: choice
         options:
-        - patch
-        - minor
-        - major
+          - patch
+          - minor
+          - major
 
 jobs:
   release:
@@ -20,7 +20,7 @@ jobs:
 
       - name: Install Dependencies # vsce etc
         run: | # shell
-          npm i -g vsce
+          npm i
 
       - name: Setup Github Actions # allow use of `git push`
         run: | # shell
@@ -31,5 +31,5 @@ jobs:
 
       - name: Publish # upload to Extension Marketplace
         run: | # shell
-          vsce publish ${{ github.event.inputs.version }} -p ${{ secrets.VSCE_PAT }}
+          npm run publish --- ${{ github.event.inputs.version }} -p ${{ secrets.VSCE_PAT }}
           git push
